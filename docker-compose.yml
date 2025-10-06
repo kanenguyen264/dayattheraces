@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  db:
+    image: mysql:8.0
+    restart: always
+    container_name: mysql
+    environment:
+      MYSQL_DATABASE: wp_db
+      MYSQL_USER: wp_user
+      MYSQL_PASSWORD: wp_pass
+      MYSQL_ROOT_PASSWORD: rootpass
+    volumes:
+      - ./db_data:/var/lib/mysql
+
+  wordpress:
+    image: wordpress:6.8.2
+    container_name: wordpress
+    ports:
+      - "8000:80"
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wp_user
+      WORDPRESS_DB_PASSWORD: wp_pass
+      WORDPRESS_DB_NAME: wp_db
+    volumes:
+      - ./wp-data:/var/www/html
+    depends_on:
+      - db
+
+volumes:
+  db_data:
