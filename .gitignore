@@ -1,0 +1,37 @@
+# Đây là file .gitignore cho dự án WordPress
+# Loại trừ các file và thư mục không cần thiết khỏi git
+
+# Thư mục WordPress core
+wp-admin/
+wp-includes/
+
+# Thư mục uploads
+wp-content/uploads/
+
+# Thư mục plugins và themes (nên chỉ track các plugin/theme tự phát triển)
+wp-content/plugins/*
+!wp-content/plugins/my-plugin/
+wp-content/themes/*
+!wp-content/themes/my-theme/
+
+# Các file cấu hình
+wp-config.php
+
+# Các file tạm, cache
+*.log
+*.tmp
+.cache/
+
+# Các file hệ thống
+.DS_Store
+Thumbs.db
+
+# Composer
+/vendor/
+
+# Node
+/node_modules/
+
+# Các file môi trường
+.env
+.env.*
